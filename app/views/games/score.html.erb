@@ -1,0 +1,14 @@
+<h1>Result</h1>
+
+<% if @is_in_grid %>
+  <% if @is_english_word %>
+    <p>Congratulations! <%= @guess.upcase%> is a valid English word!</p>
+  <% else %>
+    <p>Sorry but <%= @guess.upcase%> is not an english word...</p>
+  <% end %>
+<% else %>
+  <p>Sorry but <%= @guess.upcase%> can't be built ouf of <%= @letters%></p>
+<% end %>
+
+
+<%= link_to("Play again", new_path) %>
