@@ -18,22 +18,21 @@ class GamesController < ApplicationController
     @answer["found"]
   end
 
-  # def compute_score(guess, letters, start_time, end_time)
-  #   # TODO: runs the game and return detailed hash of result (with `:score`, `:message` and `:time` keys)
-  #   if in_grid?(guess, letters) && english_word?(guess)
-  #     (guess.length * 10) - (end_time - start_time)
-  #   else
-  #     0
-  #   end
-  # end
+  def compute_score(guess, letters, start_time, end_time)
+    if in_grid?(guess, letters) && english_word?(guess)
+      (guess.length * 10) - (end_time - start_time)
+    else
+      0
+    end
+  end
 
   def score
     @guess = params[:guess]
     @letters = params[:letters]
-    @start_time = params[:strat_time]
+    @start_time = Time.parse(params[:start_time])
     @end_time = Time.now
     @is_in_grid = in_grid?(@guess, @letters)
     @is_english_word = english_word?(@guess)
-    # @score = compute_score(@guess, @letters, @start_time, @end_time)
+    @score = compute_score(@guess, @letters, @start_time, @end_time).round()
   end
 end

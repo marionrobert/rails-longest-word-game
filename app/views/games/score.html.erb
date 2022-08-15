@@ -2,12 +2,12 @@
 
 <% if @is_in_grid %>
   <% if @is_english_word %>
-    <p>Congratulations! <%= @guess.upcase%> is a valid English word!</p>
+    <p>Congratulations! <%= @guess.upcase%> is a valid English word! Your score is <%=@score%> </p>
   <% else %>
-    <p>Sorry but <%= @guess.upcase%> is not an english word...</p>
+    <p>Sorry but <%= @guess.upcase%> is not an english word... Your score is <%=@score%></p>
   <% end %>
 <% else %>
-  <p>Sorry but <%= @guess.upcase%> can't be built ouf of <%= @letters%></p>
+  <p>Sorry but <%= @guess.upcase%> can't be built ouf of <%= @letters%>. Your score is <%=@score%></p>
 <% end %>
 
 
